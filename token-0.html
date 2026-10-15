@@ -122,6 +122,9 @@ function derivePalette(hash) {
 }
 const PALETTE = derivePalette(HASH);
 const LUMPAL = PALETTES[PALETTE];
+function lerp3(a, b, t) {
+  return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+}
 const PAL = (() => {
   // Stellar locked look; dotRamp comes from the hash-derived Luminous palette trait.
   // (Shells/lattice/wash are hidden in Stellar; their colors are carried for future use.)
@@ -133,7 +136,7 @@ const PAL = (() => {
     web3: [LUMPAL.web3[0], 0.15], web6: [LUMPAL.web6[0], 1.0], web9: [LUMPAL.web9[0], 0.125],
     web12: [LUMPAL.web12[0], 0.10],
     core: "#ffab5a",
-    wash: LUMPAL.wash.map(hexRgb), washMul: 0.64,
+    wash: LUMPAL.wash, washMul: 0.64,
   };
 })();
 const LINE = hexRgb("#bfffd2"); // light neon-green linework (midnight)
