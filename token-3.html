@@ -737,7 +737,7 @@ function draw(now) {
   const frame = document.createElement("canvas");
   frame.width = S; frame.height = S;
   frame.getContext("2d").drawImage(cv, 0, 0);
-  ctx.clearRect(0, 0, S, S);
+  ctx.fillStyle = "#000"; ctx.fillRect(0, 0, S, S); // opaque (not clearRect): captureStream sees the true composite
   ctx.drawImage(frame, 0, 0); // original
   ctx.save(); ctx.translate(0, S); ctx.scale(1, -1);
   ctx.drawImage(frame, 0, 0); ctx.restore(); // vertical flip
