@@ -7,14 +7,14 @@
 <style>
   html,body{margin:0;height:100%;background:#000;display:flex;flex-direction:column;
     align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;}
-  canvas{width:540px;height:540px;touch-action:none;}
+  canvas{width:min(92vmin,1080px);height:min(92vmin,1080px);touch-action:none;}
   canvas:active{cursor:grabbing;}
   #cap{color:#5b6570;font-size:11px;letter-spacing:.18em;margin-top:10px;
     text-transform:uppercase;text-align:center;padding:0 16px;}
 </style>
 </head>
 <body>
-<canvas id="c" width="540" height="540"></canvas>
+<canvas id="c" width="1080" height="1080"></canvas>
 <div id="cap" style="display:none">stellar geometries · template · drag to look · double-click to reset · 32s loop</div>
 <script>
 "use strict";
@@ -74,7 +74,7 @@ function gauss(rng) {
   return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
 }
 
-const S = 540; // canvas size (Stellar override for previews)
+const S = 1080; // canvas size (Stellar override for previews)
 const TAU = Math.PI * 2, PX = 2 / S;
 const ux = x => x * PX - 1, uy = y => 1 - y * PX;
 const HASH = GEO.hash;
