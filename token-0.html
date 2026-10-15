@@ -78,65 +78,22 @@ const S = 1080; // canvas size (Stellar override for previews)
 const TAU = Math.PI * 2, PX = 2 / S;
 const ux = x => x * PX - 1, uy = y => 1 - y * PX;
 const HASH = GEO.hash;
-// Stellar palette trait — the 5 Luminous Geometries palettes (Calvin 2026-10-14).
-// Hash-driven: genesis → Sunlight; others weighted Sunlight 40 / Moonlight 15 /
-// Midnight 15 / SolarEclipse 15 / LunarEclipse 15 (byte 0).
-const GENESIS_HASH = "6d8a3ff5ce6af14a157eedd431d717772e286b2347e7077d6b6dc52d539255b8";
-const PALETTES = {
-  Sunlight: {
-    dotRamp: ["#ffc46e", "#ff9e4a", "#ff8a5e", "#ff7e5e", "#ff6e5e"],
-    web3: ["#ffc46e", 0.112], web6: ["#ff7f8a", 0.124],
-    web9: ["#c46eff", 0.089], web12: ["#ff7a4d", 0.074],
-    wash: ["#ffcf6e", "#ff8a5e", "#e84f7e"],
-  },
-  Moonlight: {
-    dotRamp: ["#a8a8f5", "#8a8ae8", "#5a5ad8", "#2c2cd8", "#2a2a88"],
-    web3: ["#a8a8f5", 0.05], web6: ["#8a8ae8", 0.05],
-    web9: ["#5a5ad8", 0.05], web12: ["#2c2cd8", 0.05],
-    wash: ["#a8a8f5", "#8a8ae8", "#5a5ad8"],
-  },
-  Midnight: {
-    dotRamp: ["#bfffd2", "#3dff73", "#fc6cdc", "#9aa8ff", "#6a7adf"],
-    web3: ["#4a0f3a", 0.11], web6: ["#2f6b6b", 0.12],
-    web9: ["#36368a", 0.09], web12: ["#a8388a", 0.07],
-    wash: ["#fbbf24", "#fb7185", "#fb923c"],
-  },
-  SolarEclipse: {
-    dotRamp: ["#ffe6a8", "#f50014", "#ff6a5e", "#ffffff", "#a3000f"],
-    web3: ["#8a5f1e", 0.1], web6: ["#5e2590", 0.1],
-    web9: ["#5e2590", 0.1], web12: ["#6e2d12", 0.1],
-    wash: ["#f50014", "#e0a0a0", "#4a0008"],
-  },
-  LunarEclipse: {
-    dotRamp: ["#e8ecf1", "#a8b0bd", "#6e7683", "#ffffff", "#8a919e"],
-    web3: ["#e59c88", 0.0533], web6: ["#89bcb7", 0.06],
-    web9: ["#86a4a1", 0.0433], web12: ["#e59c88", 0.0367],
-    wash: ["#8a919e", "#c0c5ce", "#5a6270"],
-  },
-};
-function derivePalette(hash) {
-  if (hash === GENESIS_HASH) return "Sunlight";
-  const b0 = parseInt(hash.slice(0, 2), 16);
-  return b0 < 103 ? "Sunlight" : b0 < 141 ? "Moonlight" : b0 < 179 ? "Midnight"
-       : b0 < 217 ? "SolarEclipse" : "LunarEclipse";
-}
-const PALETTE = derivePalette(HASH);
-const LUMPAL = PALETTES[PALETTE];
+// Stellar palette: locked multicolor look (Calvin 2026-10-14 — trait removed, back to lock).
+const PALETTE = "stellar";
 function lerp3(a, b, t) {
   return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
 }
 const PAL = (() => {
-  // Stellar locked look; dotRamp comes from the hash-derived Luminous palette trait.
-  // (Shells/lattice/wash are hidden in Stellar; their colors are carried for future use.)
+  // Stellar locked palette (multicolor): amber/coral/pink/violet dot ramp (Calvin 2026-10-13/14)
   const inner = hexRgb("#ffd98f"), outer = hexRgb("#8e2f6e");
   return {
     shellCols: [0, 1, 2, 3, 4, 5].map(k => lerp3(inner, outer, k / 5)),
     lattice: hexRgb("#ffcf9e"), latticeMul: 0.72,
-    dotRamp: LUMPAL.dotRamp.map(hexRgb),
-    web3: [LUMPAL.web3[0], 0.15], web6: [LUMPAL.web6[0], 1.0], web9: [LUMPAL.web9[0], 0.125],
-    web12: [LUMPAL.web12[0], 0.10],
+    dotRamp: ["#ffcf6e", "#ff9e4a", "#ff6e5e", "#e84f9e", "#9a5fd0"].map(hexRgb),
+    web3: ["#ffc46e", 0.15], web6: ["#ffc46e", 1.0], web9: ["#c46eff", 0.125],
+    web12: ["#ff7a4d", 0.10],
     core: "#ffab5a",
-    wash: LUMPAL.wash, washMul: 0.64,
+    wash: ["#ffcf6e", "#ff8a5e", "#e84f7e"], washMul: 0.64,
   };
 })();
 const LINE = hexRgb("#bfffd2"); // light neon-green linework (midnight)
