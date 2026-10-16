@@ -2304,17 +2304,16 @@ function stellarDeriveGEO(tokenHash, S) {
     }
 
   }
-  // 5 foci REGULAR PENTAGON (Calvin 2026-10-16): equal weight, hash-rotated, variable spread
+  // 5 foci REGULAR PENTAGON (Calvin 2026-10-16): equal weight, VERTICAL (vertex up), variable spread
   // Spread 10-99 from byte 7: R = d * (0.5 + ((spread-10)/89) * 0.4) → 0.5d (tight) to 0.9d (wide)
+  // Rotation LOCKED at -PI/2 (vertex pointing up), not hash-rotated (Calvin 2026-10-16)
   var f0 = geo.centers.map(function(c) { return { x: c.x*scale, y: c.y*scale, bi: c.bi, bj: c.bj }; });
   var mx = (f0[0].x + f0[1].x) / 2, my = (f0[0].y + f0[1].y) / 2;
   var d5 = Math.hypot(f0[1].x - f0[0].x, f0[1].y - f0[0].y);
   var b7 = parseInt(tokenHash.slice(14, 16), 16);
   var spreadValue = 10 + Math.floor(b7 * 90 / 256);
   var R5 = d5 * (0.5 + ((spreadValue - 10) / 89) * 0.4);
-  var h5 = hashSeed(tokenHash + "::focus5::");
-  var r5 = sfc32(h5[0], h5[1], 0xabcdef, 0x123456);
-  var baseAng5 = r5() * Math.PI * 2;
+  var baseAng5 = -Math.PI / 2;  // vertical: vertex up
   var fociArr = [];
   for (var k = 0; k < 5; k++) {
     var a5 = baseAng5 + k * 2 * Math.PI / 5;
@@ -2793,7 +2792,7 @@ let SC = 140;
       }
     }
   }
-  SC = 2.16 * 1.5472134881 * (S / 2 - 30) / mx; // zoomed in 12% (Stellar, Calvin 2026-10-13)
+  SC = 2.16 * 1.7019348369 * (S / 2 - 30) / mx; // zoomed in 10% more (Stellar, Calvin 2026-10-16)
 }
 
 // interaction: drag to look around (adds an offset to the 360° orbit)
