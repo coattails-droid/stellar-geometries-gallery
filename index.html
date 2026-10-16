@@ -6,15 +6,29 @@
   h1{text-align:center;font-weight:400;letter-spacing:.15em;font-size:18px;margin:28px 0 6px;}
   p.sub{text-align:center;color:#666;font-size:13px;margin:0 0 24px;}
   .grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;padding:0 24px 48px;}
-  .cell{text-align:center;}
-  .label{margin-top:10px;font-size:14px;letter-spacing:.08em;color:#888;}
-  video{width:min(92vw,360px);height:auto;border-radius:6px;background:#000;}
+  .cell{text-align:center;background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:16px;}
+  .label{margin-top:12px;font-size:14px;letter-spacing:.08em;color:#aaa;}
+  .traits{margin-top:8px;font-size:12px;color:#666;line-height:1.6;}
+  .traits span{color:#999;}
+  iframe{width:min(92vw,360px);height:min(92vw,360px);border:none;border-radius:6px;background:#000;}
 </style></head><body>
 <h1>STELLAR GEOMETRIES</h1>
-<p class="sub">Series 5 · locked look preview</p>
+<p class="sub">Series 5 · locked template · 5 foci pentagon</p>
 <div class="grid">
-<div class="cell"><video src="token-0.mp4" width="1080" height="1080" autoplay muted loop playsinline></video><div class="label">Token 0</div></div>
-<div class="cell"><video src="token-1.mp4" width="1080" height="1080" autoplay muted loop playsinline></video><div class="label">Token 1</div></div>
-<div class="cell"><video src="token-2.mp4" width="1080" height="1080" autoplay muted loop playsinline></video><div class="label">Token 2</div></div>
+<div class="cell">
+<iframe src="token-0.html"></iframe>
+<div class="label">Token 0</div>
+<div class="traits"><span>Density:</span> 15 (28 dots)<br><span>Spread:</span> 64<br><span>Grid:</span> Circle · <span>Rings:</span> 3</div>
+</div>
+<div class="cell">
+<iframe src="token-1.html"></iframe>
+<div class="label">Token 1</div>
+<div class="traits"><span>Density:</span> 51 (53 dots)<br><span>Spread:</span> 85<br><span>Grid:</span> Triangle · <span>Rings:</span> 6</div>
+</div>
+<div class="cell">
+<iframe src="token-2.html"></iframe>
+<div class="label">Token 2</div>
+<div class="traits"><span>Density:</span> 36 (43 dots)<br><span>Spread:</span> 24<br><span>Grid:</span> Square · <span>Rings:</span> 3</div>
+</div>
 </div>
 </body></html>
