@@ -5,30 +5,32 @@
   html,body{margin:0;background:#050505;color:#ccc;font-family:system-ui,sans-serif;}
   h1{text-align:center;font-weight:400;letter-spacing:.15em;font-size:18px;margin:28px 0 6px;}
   p.sub{text-align:center;color:#666;font-size:13px;margin:0 0 24px;}
-  .grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;padding:0 24px 48px;}
-  .cell{text-align:center;background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:16px;}
+  .col{display:flex;flex-direction:column;align-items:center;gap:32px;padding:0 24px 48px;}
+  .cell{text-align:center;background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:20px;}
   .label{margin-top:12px;font-size:14px;letter-spacing:.08em;color:#aaa;}
-  .traits{margin-top:8px;font-size:12px;color:#666;line-height:1.6;}
+  .traits{margin-top:8px;font-size:12px;color:#666;}
   .traits span{color:#999;}
-  iframe{width:min(92vw,360px);height:min(92vw,360px);border:none;border-radius:6px;background:#000;}
+  iframe{width:min(92vw,420px);height:min(92vw,420px);border:none;overflow:hidden;background:#000;display:block;}
 </style></head><body>
 <h1>STELLAR GEOMETRIES</h1>
-<p class="sub">Series 5 · locked template · 5 foci pentagon</p>
-<div class="grid">
+<p class="sub">Series 5 · locked template · 5 foci pentagon (vertical)</p>
+<div class="col">
 <div class="cell">
-<iframe src="token-0.html"></iframe>
+<iframe src="token-0.html" scrolling="no"></iframe>
 <div class="label">Token 0</div>
-<div class="traits"><span>Density:</span> 15 (28 dots)<br><span>Spread:</span> 64<br><span>Grid:</span> Circle · <span>Rings:</span> 3</div>
-</div>
-<div class="cell">
-<iframe src="token-1.html"></iframe>
+<div class="traits"><span>Density:</span> 15 (28 dots) · <span>Spread:</span> 64 · <span>Grid:</span> Circle · <span>Rings:</span> 3</div>
+</div><div class="cell">
+<iframe src="token-1.html" scrolling="no"></iframe>
 <div class="label">Token 1</div>
-<div class="traits"><span>Density:</span> 51 (53 dots)<br><span>Spread:</span> 85<br><span>Grid:</span> Triangle · <span>Rings:</span> 6</div>
-</div>
-<div class="cell">
-<iframe src="token-2.html"></iframe>
+<div class="traits"><span>Density:</span> 51 (53 dots) · <span>Spread:</span> 85 · <span>Grid:</span> Triangle · <span>Rings:</span> 6</div>
+</div><div class="cell">
+<iframe src="token-2.html" scrolling="no"></iframe>
 <div class="label">Token 2</div>
-<div class="traits"><span>Density:</span> 36 (43 dots)<br><span>Spread:</span> 24<br><span>Grid:</span> Square · <span>Rings:</span> 3</div>
+<div class="traits"><span>Density:</span> 36 (43 dots) · <span>Spread:</span> 24 · <span>Grid:</span> Square · <span>Rings:</span> 3</div>
+</div><div class="cell">
+<iframe src="token-3.html" scrolling="no"></iframe>
+<div class="label">Token 3</div>
+<div class="traits"><span>Density:</span> 87 (77 dots) · <span>Spread:</span> 11 · <span>Grid:</span> Triangle · <span>Rings:</span> 9</div>
 </div>
 </div>
 </body></html>
